@@ -52,7 +52,7 @@ function game(computerSelection) {
 let playerCount = 0;
 let computerCount = 0;
 
-for (let i = 0; i < 5; i++) {
+while (playerCount < 3 && computerCount < 3) {
   let key = game(getComputerChoice());
   if (key == 1) {
     playerCount++;
@@ -62,9 +62,9 @@ for (let i = 0; i < 5; i++) {
 }
 
 if (playerCount > computerCount) {
-  alert("You win the series!");
+  alert("You win the series! " + playerCount + "-" + computerCount);
 } else if (computerCount > playerCount) {
-  alert("You lose the series!");
+  alert("You lose the series! " + playerCount + "-" + computerCount);
 } else {
   alert("Series tied!");
 }
