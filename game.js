@@ -4,32 +4,67 @@ function getComputerChoice() {
   return Choice;
 }
 
-// console.log(getComputerChoice());
-
 function playRound(playerSelection, computerSelection) {
   let player = playerSelection.toLowerCase();
   let computer = computerSelection;
-  let result = "tie";
+  let result = 0;
   if (player == "rock" && computer == "scissors") {
-    result = "You Win! Rock beats Scissors";
+    result = 1;
   } else if (player == "rock" && computer == "paper") {
-    result = "You Lose! Paper beats Rock";
+    result = 2;
   } else if (player == "rock" && computer == "rock") {
-    result = "It's a tie!";
+    result = 0;
   } else if (player == "paper" && computer == "scissors") {
-    result = "You Lose! Scissors beat Paper";
+    result = 2;
   } else if (player == "paper" && computer == "paper") {
-    result = "It's a tie!";
+    result = 0;
   } else if (player == "paper" && computer == "rock") {
-    result = "You Win! Paper beats Rock";
+    result = 1;
   } else if (player == "scissors" && computer == "rock") {
-    result = "You Lose! Rock beats Scissors";
+    result = 2;
   } else if (player == "scissors" && computer == "paper") {
-    result = "You Win! Scissors beat paper";
+    result = 1;
   } else if (player == "scissors" && computer == "scissors") {
-    result = "It's a tie!";
+    result = 0;
   } else {
-    result = "Invalid choice";
+    result = 5;
   }
   return result;
+}
+
+function game(computerSelection) {
+  let computer = computerSelection;
+  let player = prompt("Rock, Paper or Scissors?");
+  let resultCode = playRound(player, computer);
+  if (resultCode == 1) {
+    alert("You win!");
+    return resultCode;
+  } else if (resultCode == 2) {
+    alert("You lose!");
+    return resultCode;
+  } else if (resultCode == 0) {
+    alert("It's a tie!");
+  } else {
+    alert("Invalid choice");
+  }
+}
+
+let playerCount = 0;
+let computerCount = 0;
+
+for (let i = 0; i < 5; i++) {
+  let key = game(getComputerChoice());
+  if (key == 1) {
+    playerCount++;
+  } else if (key == 2) {
+    computerCount++;
+  }
+}
+
+if (playerCount > computerCount) {
+  alert("You win the series!");
+} else if (computerCount > playerCount) {
+  alert("You lose the series!");
+} else {
+  alert("Series tied!");
 }
